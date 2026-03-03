@@ -4,6 +4,8 @@ This project is a Node.js + TypeScript + PostgreSQL implementation of the **Bite
 
 The core requirement is an `/identify` endpoint that, given an `email` and/or `phoneNumber`, reconciles customer identities across multiple `Contact` rows and returns a consolidated view with a single **primary** contact and zero or more **secondary** contacts.
 
+Backend URL : https://bitespeed-be-intern-task.onrender.com
+
 ## Tech stack
 
 - **Runtime**: Node.js
