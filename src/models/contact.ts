@@ -6,8 +6,8 @@ export interface Contact {
   id: number;
   phoneNumber?: string | null;
   email?: string | null;
-  linkedId?: number | null; // the ID of another Contact linked to this one
-  linkPrecedence: LinkPrecedence; // "primary" if it's the first Contact in the link
+  linkedId?: number | null;
+  linkPrecedence: LinkPrecedence;
   createdAt: Date;
   updatedAt: Date;
   deletedAt?: Date | null;
@@ -50,23 +50,6 @@ export async function findContactsByEmailOrPhone(params: {
   const result = await pool.query(query, values);
   return result.rows as Contact[];
 }
-
-// export async function findContactsByIds(ids: number[]): Promise<Contact[]> {
-//   if (ids.length === 0) {
-//     return [];
-//   }
-
-//   const result = await pool.query(
-//     `
-//       SELECT id, "phoneNumber", email, "linkedId", "linkPrecedence", "createdAt", "updatedAt", "deletedAt"
-//       FROM contacts
-//       WHERE id = ANY($1::int[])
-//     `,
-//     [ids],
-//   );
-
-//   return result.rows as Contact[];
-// }
 
 export async function findContactById(id: number): Promise<Contact | null> {
   const result = await pool.query(
